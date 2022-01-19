@@ -62,9 +62,119 @@ print(e.upper())
 #inverser les majuscules en miniscules et vise versa
 f="How aRe YOU?"
 print(f.swapcase())
+
+
 #ajouter espace à gauche et à droite  de facon que la logueur finale de f =30
-print(f.center(30))
+print(e.center(30))
 #ajouter espace à gauche cad decaler vers la droite de facon que la logueur finale de f =30
-print(f.rjust(30))
+print(e.rjust(30))
 #ajouter espace à droite cad decaler vers la gauche de facon que la logueur finale de f =30
-print(f.ljust(30))
+print(e.ljust(30))
+#ajouter un charactere quelconque à gauche cad decaler vers la droite de facon que la logueur finale de f =30
+print(e.rjust(30,'*'))
+
+#ajouter des zeros a gauche de nombre jusqu'a avoir une longueur finale=10
+g='2356'
+print(g.zfill(10))
+
+#tester si la chaine contient que des lettres
+print(g.isalpha())
+
+#supprimer les espaces dans une chaine de caracteres (c'est le contraire de la fonction just)
+h=' Hello Python '
+print(h.strip(' '))#supprimer l'espace de deux cotés
+print(h.rstrip(' '))#supprimer l'espace de droite
+print(h.lstrip(' '))#supprimer l'espace de gauche
+#strip avec un autre charactere
+k='*******Hello Python**********'
+print(k.strip('*'))#supprimer l'espace de deux cotés
+print(k.rstrip('*'))#supprimer l'espace de droite
+print(k.lstrip('*'))#supprimer l'espace de gauche
+
+# '\n' '\t'
+i='sweet \n home alabama' #retour a la ligne
+print(i)
+j= r'C:\some\name' # ignorer \n
+print(j)
+k="sweet \t home alabama" #tabulation
+print(k)
+l=""" sweet home
+    'my home'
+           alabama """ #ecrire sur plusieurs lignes
+print(l)
+
+#impimer dans la meme ligne sans retour à la ligne ou espace
+m , n = 'aaaa' , 'bbbbb'
+print(m,end='')
+print(n)
+
+# le caractere'%'
+aa = 'alabama'
+aaa = "sweet home %s" %aa #s pour String
+print(aaa)
+bb = 136
+bbb = "sweet home %d" %bb #d pour Integer
+print(bbb)
+print("sweet %s %d" %(aa,bb))
+
+#afficher le nombre 7 avec 5 espaces avant le nombre.
+print('numbers %5d' %7) #7 est la 5ieme position
+#afficher le nombre 7 avec 5 zeros avant le nombre.
+print('numbers %05d' %7) #7 est la 5ieme position
+print("%s has %03d qoute types." %("Python", 2)) #2 est la 3ieme position
+
+#astuces d'affichage (doesn't)
+print(" it doesn't ") #utuliser "" pour ignorer '
+print(' it doesn\'t ') #utuliser \ pour ignorer '
+#astuces d'affichage ("yes")
+print(' he said "YES" ') #utuliser '' pour ignorer ""
+print(" he said \"YES\" ") #utuliser \ pour ignorer 
+print('"It doesn\'t," she said.')
+
+#tester si la chaine contient que des nombres
+A='55881'
+AA='5ml4444'
+print('is digit A, AA', A.isdigit(),AA.isdigit())
+#test sur la chaine des caracteres
+B='AAABNB JNN'
+print('is upper =',B.isupper())
+print('is lower =',B.islower())
+C= 'Ahhhh Kkkk LMn'
+D= 'Ahhhh Kkkk Lmn'
+print('is title =',C.istitle(),D.istitle())
+E= "Sana Braham"
+print("starts with:",E.startswith("San"))
+print("ends with:",E.endswith("ham"))
+
+#join inserer un caractere entre des membres d'une liste:
+print('*******'.join(('st1','st2','st3','st4')))
+print('\n'.join(('st1','st2','st3','st4')))
+
+#.format()
+pi=3.14562485452
+print("The value of pi is {}".format(pi))
+print('{0} and {1}'.format('red', 'blue'))
+print('{1} and {0}'.format('red', 'blue'))
+print("First: {first}. Last: {last}.".format(last='Z', first='A'))
+print("pi = {0:.3f}".format(pi))
+print('{:s} {:d} years old'.format('Im',20))
+print('|' + '{:^30}'.format('Hello') + '|') #justifier le texte 30 au milieu entre les deux symboles '|'
+print('|' + '{:^60}'.format('Hello') + '|') #justifier le texte 50 au milieu entre les deux symboles '|'
+print('{0:10} ==> {1:10d}'.format('name', 56322))
+
+#chercher une chaine dans un text selon deseign pattern dans la library re en utilisant compile()
+import re
+#je veux chercher une chaine contient lettres + '@' + lettres +'.' + 3  lettres entre a et z
+email = re.compile('\w+@\w+\.[a-z]{3}')
+text = "To email Guido, try guido@python.org , guido@google.fr or guido@google.com "
+print(email.findall(text)) 
+
+text = "To email Guido, try guido@python.org or guido@google.com "
+email3=re.compile(r'([\w.]+)@(\w+)\.([a-z]{3})')
+print(email3.findall(text))
+
+#creation d'un dictionnaire
+text = "To email Guido, try guido@python.org or guido@google.com "
+email4=re.compile(r'(?P<user>[\w.]+)@(?P<domain>\w+).(?P<suffix>[a-z]{3})')
+match=email4.match('guido@python.org')
+print(match.groupdict())
